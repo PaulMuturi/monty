@@ -16,7 +16,8 @@ int main(int argc, char **argv)
 	char *line = NULL;
 	char *opc = NULL;
 	unsigned int i;
-	size_t n = 0;	
+	size_t n = 0;
+	stack_t *stack = NULL;
 
 	if (argc < 2)
 		print_error("USAGE: monty file", '\0');
@@ -29,9 +30,8 @@ int main(int argc, char **argv)
 	{
 		opc = extractOpcode(line, opc);
 		
-		printf("%d\n", *op_arg);
 		if (opc)
-			getFunction(opc, i);
+			getFunction(opc, i, &stack);
 	}
 	free(line);
 	return (0);
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
   *
   *
   */
-void getFunction(char *op_code, unsigned int line_number)
+void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 {
 	instruction_t *instruction = malloc(sizeof(instruction_t));
 	if (instruction == NULL)
@@ -48,27 +48,31 @@ void getFunction(char *op_code, unsigned int line_number)
 
 	instruction->opcode = op_code;
 	
-	printf("line_number: %u\n", line_number);
-/*	switch (op_code)
+	if (strcmp(op_code, "push") == 0)
+		instruction->f = push;
+	else if (strcmp(op_code, "pall") == 0)
+		instruction->f = pall;
+	else
 	{
-		case "push":
-			instruction.f = pushItem;
-			break;
-		case "pall":
-			instruction.f = pallItems;
-			break;
-		default:
-			free(instruction);
-			fprintf(stderr, "L%u: unknown instruction %s", line_number, op_code);
-			exit(EXIT_FAILURE);
+		free(instruction);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_code);
+		exit(EXIT_FAILURE);
 	}
-*/
-	/*executeCode(instruction, line_number)*/
-
-
-
+	
+	executeCode(instruction, line_number, stack);
 }
 
+/**
+  *executeCode - executes the chosen function with its parameters
+  *@stack: pointer to a doubly linked list
+  *@line_number: line number for opcode being executed
+  *
+  *Return: void
+  */
+void executeCode(instruction_t *instruction, unsigned int line_number, stack_t **stack)
+{
+	instruction->f(stack, line_number);
+}
 
 /**
   *extractOpcode - checks if a string is valid opcode structure
