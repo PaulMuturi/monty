@@ -80,7 +80,6 @@ char *extractOpcode(char *line, char *opc_ptr)
 	char opc[200] = "\0", ch, val[200] = "\0";
 	int idx_opc = 0, idx_val = 0, i = 0, intval;
 
-/*	printf("line: %s\n", line);*/
 	while (line[i] != '\n' && line[i] != '\0')
 	{
 		ch = line[i];

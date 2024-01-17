@@ -20,10 +20,10 @@ void push(stack_t **stack, unsigned int line_number)
 	while (*stack && (*stack)->next != NULL)
 		*stack = (*stack)->next;
 
-	if (!op_arg)
+	if (*op_arg == 0)
 	{
 		free(new_node);
-		fprintf(stderr, "L%u: usage: push integer", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	}
 
 	if (*stack)

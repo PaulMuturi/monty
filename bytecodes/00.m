@@ -1,1 +1,2 @@
+push k 
 pall
