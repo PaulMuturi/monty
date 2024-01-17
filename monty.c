@@ -64,8 +64,8 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 		exit(EXIT_FAILURE);
 	}
 
+
 	instruction->f(stack, line_number);
-	/*executeCode(instruction, line_number, stack);*/
 }
 
 /**
