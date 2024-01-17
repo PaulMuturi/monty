@@ -14,11 +14,6 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
 
-
-void push(stack_t **stack, unsigned int line_number)
-{
-	stack_t *new_node = malloc(sizeof(stack_t));
-
 	if (new_node == NULL)
 		print_error("Error: malloc failed", "\0");
 

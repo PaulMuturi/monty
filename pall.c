@@ -11,7 +11,7 @@
   */
 void pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 {
-	while ((*stack)->next != NULL)
+	while (*stack && (*stack)->next != NULL)
 		*stack = (*stack)->next;
 
 	while (*stack != NULL)
