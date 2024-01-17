@@ -22,6 +22,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (*op_arg == 0)
 	{
+		printf("hello");
 		free(new_node);
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	}
