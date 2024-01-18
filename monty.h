@@ -2,8 +2,6 @@
 #define MONTY_H
 
 extern int *op_arg;
-char *extractOpcode(char *, char *);
-void print_error(char*, char*);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,9 +33,12 @@ typedef struct instruction_s
 } instruction_t;
 
 
-
+char *extractOpcode(char *, char *);
+void print_error(char*, char*);
+void print_line_error(unsigned int, char *);
 void pall(stack_t **, unsigned int);
 void push(stack_t **, unsigned int);
+void pint(stack_t **, unsigned int);
 void getFunction(char *, unsigned int, stack_t **);
 void executeCode(instruction_t *, unsigned int, stack_t **);
 #endif

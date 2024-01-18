@@ -57,6 +57,8 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 		instruction->f = push;
 	else if (strcmp(op_code, "pall") == 0)
 		instruction->f = pall;
+	else if (strcmp(op_code, "pint") == 0)
+		instruction->f = pint;
 	else
 	{
 		free(instruction);
@@ -117,22 +119,3 @@ char *extractOpcode(char *line, char *opc_ptr)
 	op_arg = &intval;
 	return (opc_ptr);
 }
-
-
-/**
-  *print_error - prints error and exits program
-  *@msg: error message for display
-  *@cat_arg: string to concatenate when print
-  *
-  *Return: void
-*/
-void print_error(char *msg, char *cat_arg)
-{
-	if (cat_arg)
-		fprintf(stderr, "%s %s\n", msg, cat_arg);
-	else
-		fprintf(stderr, "%s\n", msg);
-
-	exit(EXIT_FAILURE);
-}
-
