@@ -53,23 +53,25 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 
 	instruction->opcode = op_code;
 
-	if (strcmp(op_code, "push") == 0)
-		instruction->f = push;
-	else if (strcmp(op_code, "pall") == 0)
-		instruction->f = pall;
-	else if (strcmp(op_code, "pint") == 0)
-		instruction->f = pint;
-	else if (strcmp(op_code, "pop") == 0)
-		instruction->f = pop;
-	else
+	if (strcmp(op_code, "nop") != 0)
 	{
-		free(instruction);
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_code);
-		exit(EXIT_FAILURE);
+		if (strcmp(op_code, "push") == 0)
+			instruction->f = push;
+		else if (strcmp(op_code, "pall") == 0)
+			instruction->f = pall;
+		else if (strcmp(op_code, "pint") == 0)
+			instruction->f = pint;
+		else if (strcmp(op_code, "pop") == 0)
+			instruction->f = pop;
+		else
+		{
+			free(instruction);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op_code);
+			exit(EXIT_FAILURE);
+		}
+
+		instruction->f(stack, line_number);
 	}
-
-
-	instruction->f(stack, line_number);
 	free(instruction);
 }
 
