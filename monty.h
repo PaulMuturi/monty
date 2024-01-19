@@ -39,6 +39,7 @@ void print_line_error(unsigned int, char *);
 void pall(stack_t **, unsigned int);
 void push(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
+void pop(stack_t **, unsigned int);
 void getFunction(char *, unsigned int, stack_t **);
 void executeCode(instruction_t *, unsigned int, stack_t **);
 #endif

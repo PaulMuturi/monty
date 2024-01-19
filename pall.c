@@ -11,12 +11,17 @@
   */
 void pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 {
-	while (*stack && (*stack)->next != NULL)
-		*stack = (*stack)->next;
-
-	while (*stack != NULL)
+	if (*stack)
 	{
-		fprintf(stdout, "%d\n", (*stack)->n);
-		*stack = (*stack)->prev;
+		while ((*stack)->next != NULL)
+			*stack = (*stack)->next;
+
+		while ((*stack)->prev != NULL)
+		{
+			printf("%d\n", (*stack)->n);
+			*stack = (*stack)->prev;
+		}
+
+		printf("%d\n", (*stack)->n);
 	}
 }

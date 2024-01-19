@@ -59,6 +59,8 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 		instruction->f = pall;
 	else if (strcmp(op_code, "pint") == 0)
 		instruction->f = pint;
+	else if (strcmp(op_code, "pop") == 0)
+		instruction->f = pop;
 	else
 	{
 		free(instruction);
@@ -68,6 +70,7 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 
 
 	instruction->f(stack, line_number);
+	free(instruction);
 }
 
 /**

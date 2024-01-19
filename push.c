@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 /**
-  *push - pushes an item to the dounly linked list
+  *push - pushes an item at the end of doubly linked list
   *@stack: doubly linked list
   *@line_number: line with the push opcode
   *
@@ -26,16 +26,14 @@ void push(stack_t **stack, unsigned int line_number)
 		print_line_error(line_number, "usage: push integer");
 	}
 
+	new_node->next = NULL;
 	if (*stack)
 	{
 		(*stack)->next = new_node;
 		new_node->prev = *stack;
 	}
 	else
-	{
 		new_node->prev = NULL;
-		new_node->next = NULL;
-	}
 
 	new_node->n = *op_arg;
 
