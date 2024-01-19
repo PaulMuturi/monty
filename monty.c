@@ -63,6 +63,8 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 			instruction->f = pint;
 		else if (strcmp(op_code, "pop") == 0)
 			instruction->f = pop;
+		else if (strcmp(op_code, "swap") == 0)
+			instruction->f = swap;
 		else
 		{
 			free(instruction);
