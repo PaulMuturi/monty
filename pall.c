@@ -18,10 +18,10 @@ void pall(stack_t **stack, unsigned int __attribute__((unused)) line_number)
 
 		while ((*stack)->prev != NULL)
 		{
-			printf("%d\n", (*stack)->n);
+			printf(stdout, "%d\n", (*stack)->n);
 			*stack = (*stack)->prev;
 		}
 
-		printf("%d\n", (*stack)->n);
+		fprintf(stdout, "%d\n", (*stack)->n);
 	}
 }

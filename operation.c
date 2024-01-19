@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int *op_arg;
-
 /**
   *print_line_error - prints error encountered at a certain line
   *@line_number: line where error occured

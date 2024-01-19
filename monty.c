@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include "monty.h"
 #include <string.h>
+
+int *op_arg;
 /**
   *main - entry point to the program
   *@argv: array of strings arguments
@@ -65,6 +67,8 @@ void getFunction(char *op_code, unsigned int line_number, stack_t **stack)
 			instruction->f = pop;
 		else if (strcmp(op_code, "swap") == 0)
 			instruction->f = swap;
+		else if (strcmp(op_code, "add") == 0)
+			instruction->f = add;
 		else
 		{
 			free(instruction);
